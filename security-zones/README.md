@@ -46,7 +46,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -78,7 +78,7 @@ In this module, Security Zones settings are defined using the *security_zones_co
 - **reporting_region**: the Cloud Guard reporting region, where all API calls, except reads, are made on. You can choose the reporting region among the available regions when enabling Cloud Guard. After Cloud Guard is enabled, you cannot change the reporting region without disabling and re-enabling Cloud Guard. Setting this attribute is required if Cloud Guard is enabled by this module. It defaults to tenancy home region if undefined.
 - **self_manage_resources**: whether Oracle managed resources are created by customers. Default: false.
 - **recipes**: the Security Zone recipes. A recipe is a set of policies.
-- **security_zones**: the Security Zones. 
+- **security_zones**: the Security Zones.
 
 **Note**: The module enables the Cloud Guard service in the tenancy if Cloud Guard is not enabled. **It will not disable Cloud Guard under any circumstances**. For disabling Cloud Guard, use the OCI Console.
 
@@ -91,7 +91,7 @@ The *recipes* attribute supports the following attributes:
 - **description**: the recipe description. It defaults to *name* if undefined.
 - **compartment_id**: the compartment where the Security Zone Recipe is created. This attribute is overloaded. It can be assigned either a literal OCID or a reference (a key) to an OCID. See [External Dependencies](#ext_dep) for details.
 - **cis_level**: the CIS level setting, driving the policies that are added to the recipe. Valid values: "1" and "2". Default: "1". See [CIS Level Setting](#cis_level_setting) for details.
-- **security_policies_ocids**: a list of existing policis OCIDs that should be added to to the recipe. 
+- **security_policies_ocids**: a list of existing policis OCIDs that should be added to to the recipe.
 - **defined_tags**: the recipe defined tags. *default_defined_tags* is used if undefined.
 - **freeform_tags**: the recipe freeform tags. *default_freeform_tags* is used if undefined.
 
@@ -108,7 +108,7 @@ CIS level is a concept in the CIS Benchmark, determining the scope and strictnes
 
 - Level 1 policies +
 - Deny Block Vulume without a customer managed key (*deny block_volume_without_vault_key*)
-- Deny Book Volume without a customer managed key (*deny boot_volume_without_vault_key*) 
+- Deny Book Volume without a customer managed key (*deny boot_volume_without_vault_key*)
 - Deny buckets without a customer managed key (*deny buckets_without_vault_key*)
 - Deny file system without a customer managed key (*deny file_system_without_vault_key*)
 
@@ -131,12 +131,12 @@ The following snippet enables Cloud Guard service (if not already enabled), sett
 ```
 security_zones_configuration = {
   reporting_region = "us-ashburn-1" # It defaults to tenancy home region if undefined.
-  
+
   recipes = {
     CIS-L1-RECIPE = {
       name = "vision-security-zone-cis-level-1-recipe"
       description = "CIS Level 1 recipe"
-      compartment_id = "ocid1.compartment.oc1..aaaaaa...epa" 
+      compartment_id = "ocid1.compartment.oc1..aaaaaa...epa"
       cis_level = "1"
     }
     CIS-L2-RECIPE = {
@@ -152,13 +152,13 @@ security_zones_configuration = {
       name = "vision-security-zone"
       compartment_id = "ocid1.compartment.oc1..aaaaaa...ufq"
       recipe_key = "CIS-L1-RECIPE"
-    }  
+    }
   }
 }
 ```
 ### <a name="ext_dep">External Dependencies</a>
 
-The example above has some dependencies. Specifically, it requires *tenancy_ocid* and *compartment_id* values. These values need to be obtained somehow. In some cases, you can simply get them from the team that is managing compartments and operate on a manual copy-and-paste fashion. However, in the automation world, copying and pasting can be slow and error prone. More sophisticated automation approaches would get these dependencies from their producing Terraform configurations. With this scenario in mind, **the module overloads the attributes ending in *_id***. Note *tenancy_ocid* is immutable in the tenancy lifetime, hence the module expects that the literal tenancy OCID is used. The *\*_id* attributes can be assigned a literal OCID (as in the example above, for those whom copying and pasting is an acceptable approach) or a reference (a key) to an OCID. If a key to an OCID is given, the module requires a map of objects where the key and the OCID are expected to be found. This map of objects is passed to the module via the *compartments_dependency* attribute. 
+The example above has some dependencies. Specifically, it requires *tenancy_ocid* and *compartment_id* values. These values need to be obtained somehow. In some cases, you can simply get them from the team that is managing compartments and operate on a manual copy-and-paste fashion. However, in the automation world, copying and pasting can be slow and error prone. More sophisticated automation approaches would get these dependencies from their producing Terraform configurations. With this scenario in mind, **the module overloads the attributes ending in *_id***. Note *tenancy_ocid* is immutable in the tenancy lifetime, hence the module expects that the literal tenancy OCID is used. The *\*_id* attributes can be assigned a literal OCID (as in the example above, for those whom copying and pasting is an acceptable approach) or a reference (a key) to an OCID. If a key to an OCID is given, the module requires a map of objects where the key and the OCID are expected to be found. This map of objects is passed to the module via the *compartments_dependency* attribute.
 
 Rewriting the example above with the external dependency:
 
@@ -169,7 +169,7 @@ security_zones_configuration = {
     CIS-L1-RECIPE = {
       name = "vision-security-zone-cis-level-1-recipe"
       description = "CIS Level 1 recipe"
-      compartment_id = "CIS-LANDING-ZONE-CMP" 
+      compartment_id = "CIS-LANDING-ZONE-CMP"
       cis_level = "1"
     }
     CIS-L2-RECIPE = {
@@ -185,7 +185,7 @@ security_zones_configuration = {
       name = "vision-security-zone"
       compartment_id = "CIS-LANDING-ZONE-CMP"
       recipe_key = "CIS-L1-RECIPE"
-    }  
+    }
   }
 }
 
@@ -198,7 +198,7 @@ compartments_dependency = {
 
 The example now relies on a reference to a compartment (*CIS-LANDING-ZONE-CMP* key) rather than a literal compartment OCID. This key also need to be known somehow, but it is more readable than a OCID and can have its name standardized by DevOps, facilitating automation.
 
-The *compartments_dependency* map is typically the output of another Terraform configuration that gets published in a well-defined location for easy consumption. For instance, [this example](./examples/external_dependency/README.md) uses OCI Object Storage object for sharing dependencies across Terraform configurations. 
+The *compartments_dependency* map is typically the output of another Terraform configuration that gets published in a well-defined location for easy consumption. For instance, [this example](./examples/external_dependency/README.md) uses OCI Object Storage object for sharing dependencies across Terraform configurations.
 
 The external dependency approach helps with the creation of loosely coupled Terraform configurations with clearly defined dependencies between them, avoiding copying and pasting.
 

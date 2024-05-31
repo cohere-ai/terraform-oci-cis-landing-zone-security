@@ -41,7 +41,7 @@ For more information about Bastion policies [click here](https://docs.oracle.com
 This module relies on [Terraform Optional Object Type Attributes feature](https://developer.hashicorp.com/terraform/language/expressions/type-constraints#optional-object-type-attributes), which has been promoted and no longer experimental in versions greater than or equal to 1.3.0. The feature shortens the amount of input values in complex object types, by having Terraform automatically inserting a default value for any missing optional attributes.
 
 ## <a name="functioning">Module Functioning</a>
-The module defines two top level attributes used to manage bastions and sessions: 
+The module defines two top level attributes used to manage bastions and sessions:
 - **bastions_configuration**: for managing bastions.
 - **sessions_configuration**: for managing bastion sessions.
 
@@ -79,7 +79,7 @@ Sessions are defined using the  **sessions** attribute. In Terraform terms, it i
 - **ssh_public_key**: (Optional) The SSH public key path to connect to target. *default_ssh_public_key* is used if undefined.
 - **session_type**: (Optional) The session type. Supported values are "MANAGED_SSH" and "PORT_FORWARDING". *default_session_type* if undefined.
 - **target_resource**: Either the FQDN, OCID or private IP address of the target resource that the session connects to.
-- **target_user**: (Optional) The SSH user name in the target resource. Required for "MANAGED_SSH" session type. 
+- **target_user**: (Optional) The SSH user name in the target resource. Required for "MANAGED_SSH" session type.
 - **target_port**: The SSH port number.
 - **session_ttl_in_seconds**: (Optional) The session time to live.
 - **session_name**: The session display name.
@@ -118,8 +118,8 @@ Example:
 {
   "INSTANCE-1" : {
     "id" : "ocid1.instance.oc1.iad.aaaaaaaax...e7a"
-  }, 
-} 
+  },
+}
 ```
 
 - **endpoints_dependency**: A map of objects containing the externally managed endpoint resources this module may depend on. All map objects must have the same type and should contain the following attributes:
@@ -130,8 +130,8 @@ Example:
 {
   "OKE1" : {
     "ip_address" : "10.0.1.23"
-  } 
-} 
+  }
+}
 ```
 ## <a name="related">Related Documentation</a>
 - [Bastions](https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm)

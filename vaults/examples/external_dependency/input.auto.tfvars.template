@@ -4,12 +4,12 @@
 #-------------------------------------------------------------------------------------------------------------------------------------------
 # 1. Rename this file to <project-name>.auto.tfvars, where <project-name> is a name of your choice.
 # 2. Provide values for "Tenancy Connectivity Variables".
-# 3. Replace <REPLACE-BY-COMPARTMENT-REFERENCE> placeholder by the appropriate compartment reference, expected to be found in the 
+# 3. Replace <REPLACE-BY-COMPARTMENT-REFERENCE> placeholder by the appropriate compartment reference, expected to be found in the
 #    OCI Object Storage object referred by <REPLACE-BY-OBJECT-NAME> within the object pointed by oci_compartments_dependency.
-# 4. Replace <REPLACE-BY-VAULT-MANAGEMENT-ENDPOINT-REFERENCE> by the appropriate vault reference, expected to be found in the 
-#    OCI Object Storage object referred by <REPLACE-BY-OBJECT-NAME> within the object pointed by oci_vaults_dependency.  
+# 4. Replace <REPLACE-BY-VAULT-MANAGEMENT-ENDPOINT-REFERENCE> by the appropriate vault reference, expected to be found in the
+#    OCI Object Storage object referred by <REPLACE-BY-OBJECT-NAME> within the object pointed by oci_vaults_dependency.
 # 5. Replace <REPLACE-BY-BUCKET-NAME> placeholders by the OCI Object Storage buckets that contain the object referred by <REPLACE-BY-OBJECT-NAME>.
-# 6. Replace <REPLACE-BY-OBJECT-NAME> placeholders by the OCI Object Storage objects with the compartments and vaults references. These  
+# 6. Replace <REPLACE-BY-OBJECT-NAME> placeholders by the OCI Object Storage objects with the compartments and vaults references. These
 #    objects are supposedly stored in OCI Object Storage by the modules that manage compartments and vaults.
 #-------------------------------------------------------------------------------------------------------------------------------------------
 

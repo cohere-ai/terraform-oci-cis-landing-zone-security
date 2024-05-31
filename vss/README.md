@@ -62,7 +62,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -93,7 +93,7 @@ In this module, scanning recipes and targets are defined using the *scanning_con
 - **host_recipes**: (Optional) the scanning recipes applicable to Compute instances.
 - **host_targets**: (Optional) the scanning target Compute instances.
 - **container_recipes**: (Optional) the scanning recipes applicable to container images.
-- **container_targets**: (Optional) the scanning target container images. 
+- **container_targets**: (Optional) the scanning target container images.
 
 ### Defining Host Recipes
 
@@ -105,7 +105,7 @@ The *host_recipes* attribute supports the following attributes:
 - **port_scan_level**: (Optional) the port scan level. Valid values: "STANDARD", "LIGHT", "NONE". "STANDARD" checks the 1000 most common port numbers. "LIGHT" checks the 100 most common port numbers. "NONE" does not check for open ports. Default: "STANDARD".
 - **schedule_settings**: (Optional) the schedule settings for host scans.
   - **type**: (Optional) how often the scan occurs. Valid values: "WEEKLY", "DAILY". Default: "WEEKLY".
-  - **day_of_week**: (Optional) day of week the scan occurs. Only valid for "WEEKLY" scans. Default: "SUNDAY". 
+  - **day_of_week**: (Optional) day of week the scan occurs. Only valid for "WEEKLY" scans. Default: "SUNDAY".
 - **agent_settings**: (Optional) agent scan settings
   - **scan_level**: (Optional) the agent scan level. Valid values: "STANDARD", "NONE". "STANDARD" enables agent-based scanning. "NONE" disables agent-based scanning. Default: "STANDARD".
   - **vendor**: (Optional) the vendor for host scan. Valid values: "OCI".
@@ -197,7 +197,7 @@ scanning_configuration = {
       container_recipe_id = "VISION-CONTAINER-RECIPE" # this is a reference to the recipe defined in container_recipes attribute.
     }
   }
-}  
+}
 ```
 
 ### <a name="ext_dep">External Dependencies</a>
@@ -238,7 +238,7 @@ scanning_configuration = {
       container_recipe_id = "VISION-CONTAINER-RECIPE" # this is a reference to the recipe defined in container_recipes attribute.
     }
   }
-}  
+}
 
 compartments_dependency = {
   "SECURITY-CMP" : {
@@ -253,7 +253,7 @@ compartments_dependency = {
 
 The example now relies on references to compartments (*SECURITY-CMP* and *APPLICATION-CMP* keys) rather than literal compartment OCIDs. These keys also need to be known somehow, but they are more readable than OCIDs and can have their naming standardized by DevOps, facilitating automation.
 
-The *compartments_dependency* map is typically the output of another Terraform configuration that gets published in a well-defined location for easy consumption. For instance, [this example](./examples/external_dependency/README.md) uses OCI Object Storage object for sharing dependencies across Terraform configurations. 
+The *compartments_dependency* map is typically the output of another Terraform configuration that gets published in a well-defined location for easy consumption. For instance, [this example](./examples/external_dependency/README.md) uses OCI Object Storage object for sharing dependencies across Terraform configurations.
 
 The external dependency approach helps with the creation of loosely coupled Terraform configurations with clearly defined dependencies between them, avoiding copying and pasting.
 

@@ -10,7 +10,7 @@ It defines a vault with two keys. The vault is created in a shared HSM partition
 1. Rename *input.auto.tfvars.template* to *\<project-name\>.auto.tfvars*, where *\<project-name\>* is any name of your choice.
 
 2. Within *\<project-name\>.auto.tfvars*, provide tenancy connectivity information and adjust the *security_zones_configuration* input variable, by making the appropriate substitutions:
-   - Replace *\<REPLACE-BY-COMPARTMENT-OCID\>* placeholder by the appropriate compartment OCID.iate compartment OCIDs. 
+   - Replace *\<REPLACE-BY-COMPARTMENT-OCID\>* placeholder by the appropriate compartment OCID.iate compartment OCIDs.
 
 Refer to [Vaults module README.md](../../README.md) for overall attributes usage.
 

@@ -4,14 +4,14 @@
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 # 1. Rename this file to <project-name>.auto.tfvars, where <project-name> is a name of your choice.
 # 2. Provide values for "Tenancy Connectivity Variables".
-# 3. Replace <REPLACE-BY-COMPARTMENT-REFERENCE> placeholder by the appropriate compartment reference, expected to be found in the 
+# 3. Replace <REPLACE-BY-COMPARTMENT-REFERENCE> placeholder by the appropriate compartment reference, expected to be found in the
 #    OCI Object Storage object named <REPLACE-BY-OBJECT-NAME> in oci_compartments_dependency.
-# 4. Replace <REPLACE-BY-TARGET-COMPARTMENT-REFERENCE> placeholder by the appropriate compartment reference, expected to be found in the 
+# 4. Replace <REPLACE-BY-TARGET-COMPARTMENT-REFERENCE> placeholder by the appropriate compartment reference, expected to be found in the
 #    OCI Object Storage object named <REPLACE-BY-OBJECT-NAME> in oci_compartments_dependency.
-# 5. Replace <REPLACE-BY-TARGET-REGISTRY-COMPARTMENT-REFERENCE> placeholder by the appropriate compartment reference, expected to be found in the 
+# 5. Replace <REPLACE-BY-TARGET-REGISTRY-COMPARTMENT-REFERENCE> placeholder by the appropriate compartment reference, expected to be found in the
 #    OCI Object Storage object named <REPLACE-BY-OBJECT-NAME> in oci_compartments_dependency.
 # 6. Replace <REPLACE-BY-BUCKET-NAME> placeholder by the OCI Object Storage bucket that contains the object named <REPLACE-BY-OBJECT-NAME>.
-# 7. Replace <REPLACE-BY-OBJECT-NAME> placeholder by the OCI Object Storage object with the compartments references. This 
+# 7. Replace <REPLACE-BY-OBJECT-NAME> placeholder by the OCI Object Storage object with the compartments references. This
 #    object is tipically stored in OCI Object Storage by the module that manages compartments.
 #--------------------------------------------------------------------------------------------------------------------------------------------------
 

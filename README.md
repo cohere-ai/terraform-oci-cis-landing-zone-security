@@ -11,7 +11,7 @@ The following modules are available:
 - [Vaults](./vaults/) (a.k.a KMS)
 - [Vulnerability Scanning](./vss/)
 
-Within each module you find an *examples* folder. Each example is a fully runnable Terraform configuration that you can quickly test and put to use by modifying the input data according to your own needs.  
+Within each module you find an *examples* folder. Each example is a fully runnable Terraform configuration that you can quickly test and put to use by modifying the input data according to your own needs.
 
 ## CIS OCI Foundations Benchmark Modules Collection
 

@@ -23,7 +23,7 @@
 #---------------------------------------
 
 bastions_configuration = {
-  bastions = { 
+  bastions = {
     BASTION-1 = {
       compartment_id        = "<REPLACE-BY-COMPARTMENT-OCID>"
       subnet_id             = "<REPLACE-BY-SUBNET-OCID>"

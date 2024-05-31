@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This example shows how to deploy Cloud Guard targets in OCI using the [Cloud Guard module](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-security/tree/main/cloud-guard/). It is functionally equivalent to [Vision example](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-security/tree/main/cloud-guard/examples/vision), but it obtains its dependencies from OCI Object Storage object. 
+This example shows how to deploy Cloud Guard targets in OCI using the [Cloud Guard module](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-security/tree/main/cloud-guard/). It is functionally equivalent to [Vision example](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-security/tree/main/cloud-guard/examples/vision), but it obtains its dependencies from OCI Object Storage object.
 
 The module enables Cloud Guard service (if not already enabled), setting Ashburn as the reporting region, and defines two targets. Both targets monitor compartments under *resource_ocid* compartment and are created in *resource_ocid* compartment. First target (*CLOUD-GUARD-TARGET-1*) uses Oracle provided recipes while the second one (*CLOUD-GUARD-TARGET-2*) uses cloned recipes.
 
@@ -18,9 +18,9 @@ allow group <group> to read objects in compartment <bucket-compartment-name> whe
 1. Rename *input.auto.tfvars.template* to *\<project-name\>.auto.tfvars*, where *\<project-name\>* is any name of your choice.
 
 2. Within *\<project-name\>.auto.tfvars*, provide tenancy connectivity information and adjust the *cloud_guard_configuration* input variable, by making the appropriate substitutions:
-   - Replace *\<REPLACE-BY-TENANCY-OCID\>* placeholder by the tenancy OCID. 
+   - Replace *\<REPLACE-BY-TENANCY-OCID\>* placeholder by the tenancy OCID.
    - Replace *\<REPLACE-BY-REPORTING-REGION-NAME\>* placeholder by the actual reporting region name.
-   - Replace *\<REPLACE-BY-TARGET-COMPARTMENT-REFERENCE\>* placeholders by the appropriate target compartment references, expected to be found in the OCI Object Storage object referred by *\<REPLACE-BY-OBJECT-NAME\>*. 
+   - Replace *\<REPLACE-BY-TARGET-COMPARTMENT-REFERENCE\>* placeholders by the appropriate target compartment references, expected to be found in the OCI Object Storage object referred by *\<REPLACE-BY-OBJECT-NAME\>*.
    - Replace *\<REPLACE-BY-BUCKET-NAME\>* placeholder by the OCI Object Storage bucket that contains the object referred by *\<REPLACE-BY-OBJECT-NAME\>*.
    - Replace *\<REPLACE-BY-OBJECT-NAME\>* placeholder by the OCI Object Storage object that has the compartment references. This object is supposedly stored on OCI Object Storage by the module that manages compartments.
 

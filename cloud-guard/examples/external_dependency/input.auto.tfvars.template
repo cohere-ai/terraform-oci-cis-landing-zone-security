@@ -4,12 +4,12 @@
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 # 1. Rename this file to <project-name>.auto.tfvars, where <project-name> is a name of your choice.
 # 2. Provide values for "Tenancy Connectivity Variables".
-# 3. Replace <REPLACE-BY-TENANCY-OCID> placeholder by the appropriate compartment OCID. 
+# 3. Replace <REPLACE-BY-TENANCY-OCID> placeholder by the appropriate compartment OCID.
 # 4. Replace <REPLACE-BY-REPORTING-REGION-NAME> placeholder by the actual reporting region name.
-# 5. Replace <REPLACE-BY-TARGET-COMPARTMENT-REFERENCE> placeholders by the appropriate target compartment references, expected to be found in the 
+# 5. Replace <REPLACE-BY-TARGET-COMPARTMENT-REFERENCE> placeholders by the appropriate target compartment references, expected to be found in the
 #    OCI Object Storage object referred by <REPLACE-BY-OBJECT-NAME>.
 # 6. Replace <REPLACE-BY-BUCKET-NAME> placeholder by the OCI Object Storage bucket that contains the object referred by <REPLACE-BY-OBJECT-NAME>.
-# 7. Replace <REPLACE-BY-OBJECT-NAME> placeholder by the OCI Object Storage object that has the compartment references. This object is supposedly 
+# 7. Replace <REPLACE-BY-OBJECT-NAME> placeholder by the OCI Object Storage object that has the compartment references. This object is supposedly
 #    stored in OCI Object Storage by the module that manages compartments.
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -30,12 +30,12 @@ region               = "<your tenancy region>"      # This is your region, where
 
 cloud_guard_configuration = {
   reporting_region = "<REPLACE-BY-REPORTING-REGION-NAME>" # example: "us-ashburn-1". It defaults to tenancy home region if not provided.
-  
+
   targets = {
     CLOUD-GUARD-TARGET-1 = {
       name = "vision-cloud-guard-target-1"
       resource_id = "<REPLACE-BY-TARGET-COMPARTMENT-REFERENCE>"
-    }  
+    }
     CLOUD-GUARD-TARGET-2 = {
       name = "vision-cloud-guard-target-1"
       resource_id = "<REPLACE-BY-TARGET-COMPARTMENT-REFERENCE>"

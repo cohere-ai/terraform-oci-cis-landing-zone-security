@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This example shows how to deploy Security Zones in OCI using the [Security Zones module](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-security/tree/main/security-zones/). It is functionally equivalent to [Vision example](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-security/tree/main/security-zones/examples/vision), but it obtains its dependencies from OCI Object Storage object, specified in *oci_compartments_dependency* variable settings. 
+This example shows how to deploy Security Zones in OCI using the [Security Zones module](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-security/tree/main/security-zones/). It is functionally equivalent to [Vision example](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-security/tree/main/security-zones/examples/vision), but it obtains its dependencies from OCI Object Storage object, specified in *oci_compartments_dependency* variable settings.
 
 It enables Cloud Guard service (if not already enabled), setting Ashburn as the reporting region, and defines two recipes and one security zone. The recipes are stored in the same *compartment_id*. The first recipe (*CIS-L1-RECIPE*) is a CIS level 1 recipe (*cis_level = "1"*) while the second (*CIS-L2-RECIPE*) is a CIS level 2 recipe (*cis_level = "2"*). The security zone is defined for *compartment_id* and is associated with *CIS-l1-RECIPE*. *CIS-L2-RECIPE* is not associated with a security zone.
 
@@ -19,7 +19,7 @@ allow group <group> to read objects in compartment <bucket-compartment-name> whe
 
 2. Within *\<project-name\>.auto.tfvars*, provide tenancy connectivity information and adjust the *security_zones_configuration* input variable, by making the appropriate substitutions:
    - Replace *\<REPLACE-BY-REPORTING-REGION-NAME\>* placeholder by the actual reporting region name. Example: "us-ashburn-1".
-   - Replace *\<REPLACE-BY-SECURITY-ZONE-COMPARTMENT-REFERENCE\>* placeholder by the appropriate security zone compartment reference, expected to be found in the OCI Object Storage object referred by *\<REPLACE-BY-OBJECT-NAME\>*. 
+   - Replace *\<REPLACE-BY-SECURITY-ZONE-COMPARTMENT-REFERENCE\>* placeholder by the appropriate security zone compartment reference, expected to be found in the OCI Object Storage object referred by *\<REPLACE-BY-OBJECT-NAME\>*.
    - Replace *\<REPLACE-BY-SECURITY-ZONE-RECIPE-COMPARTMENT-REFERENCE\>* placeholders by the appropriate security zone recipe compartment references, expected to be found in the OCI Object Storage object referred by *\<REPLACE-BY-OBJECT-NAME\>*.
    - Replace *\<REPLACE-BY-BUCKET-NAME\>* placeholder by the OCI Object Storage bucket that contains the object referred by *\<REPLACE-BY-OBJECT-NAME\>*.
    - Replace *\<REPLACE-BY-OBJECT-NAME\>* placeholder by the OCI Object Storage object that has the compartment references. This object is supposedly stored on OCI Object Storage by the module that manages compartments.

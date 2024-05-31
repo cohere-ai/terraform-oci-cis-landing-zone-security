@@ -46,7 +46,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -89,7 +89,7 @@ The *targets* attribute supports the following attributes:
 - **compartment_id**: the compartment where the target is created. It defaults to the value of *resource_id* if *resource_type* is "COMPARTMENT". This attribute is overloaded. It can be assigned either a literal OCID or a reference (a key) to an OCID. See [External Dependencies](#ext_dep) for details.
 - **resource_type**: the resource type that Cloud Guard monitors. Valid values: "COMPARTMENT", "FACLOUD". Default: "COMPARTMENT".
 - **resource_id**: the resource that Cloud Guard monitors. If the resource refers to a compartment, Cloud Guard monitors the compartment and all its subcompartments. This attribute is overloaded. It can be assigned either a literal OCID or a reference (a key) to an OCID. See [External Dependencies](#ext_dep) for details.
-- **use_cloned_recipes**: whether the target should use clones of Oracle provided recipes. Default: false, which means targets use the Oracle provided recipes by default.  
+- **use_cloned_recipes**: whether the target should use clones of Oracle provided recipes. Default: false, which means targets use the Oracle provided recipes by default.
 - **defined_tags**: the target defined tags. *default_defined_tags* is used if undefined.
 - **freeform_tags**: the target freeform tags. *default_freeform_tags* is used if undefined.
 
@@ -101,12 +101,12 @@ The following snippet enables Cloud Guard service (if not already enabled), sett
 ```
 cloud_guard_configuration = {
   reporting_region = "us-ashburn-1" # It defaults to tenancy home region if undefined.
-  
+
   targets = {
     CLOUD-GUARD-TARGET-1 = {
       name = "vision-cloud-guard-target-1"
       resource_id = "ocid1.compartment.oc1..aaaaaa...xuq"
-    }  
+    }
     CLOUD-GUARD-TARGET-2 = {
       name = "vision-cloud-guard-target-1"
       resource_id = "ocid1.compartment.oc1..aaaaaa...y2a"
@@ -117,7 +117,7 @@ cloud_guard_configuration = {
 ```
 ### <a name="ext_dep">External Dependencies</a>
 
-The example above has some dependencies. Specifically, it requires *tenancy_ocid* and *resource_id* values. These values need to be obtained somehow. In some cases, you can simply get them from the team that is managing compartments and operate on a manual copy-and-paste fashion. However, in the automation world, copying and pasting can be slow and error prone. More sophisticated automation approaches would get these dependencies from their producing Terraform configurations. With this scenario in mind, **the module overloads the attributes ending in *_id***. The *\*_id* attributes can be assigned a literal OCID (as in the example above, for those whom copying and pasting is an acceptable approach) or a reference (a key) to an OCID. If a key to an OCID is given, the module requires a map of objects where the key and the OCID are expected to be found. This map of objects is passed to the module via the *compartments_dependency* variable. 
+The example above has some dependencies. Specifically, it requires *tenancy_ocid* and *resource_id* values. These values need to be obtained somehow. In some cases, you can simply get them from the team that is managing compartments and operate on a manual copy-and-paste fashion. However, in the automation world, copying and pasting can be slow and error prone. More sophisticated automation approaches would get these dependencies from their producing Terraform configurations. With this scenario in mind, **the module overloads the attributes ending in *_id***. The *\*_id* attributes can be assigned a literal OCID (as in the example above, for those whom copying and pasting is an acceptable approach) or a reference (a key) to an OCID. If a key to an OCID is given, the module requires a map of objects where the key and the OCID are expected to be found. This map of objects is passed to the module via the *compartments_dependency* variable.
 
 **Note**: The special key "TENANCY-ROOT" is reserved and should be used for referring to the tenancy OCID in *resource_id* and *compartment_id* attributes.
 
@@ -126,12 +126,12 @@ Rewriting the example above with the external dependency:
 ```
 cloud_guard_configuration = {
   reporting_region = "us-ashburn-1" # It defaults to tenancy home region if undefined.
-  
+
   targets = {
     CLOUD-GUARD-TARGET-1 = {
       name = "vision-cloud-guard-target-1"
       resource_id = "HR-CMP"
-    }  
+    }
     CLOUD-GUARD-TARGET-2 = {
       name = "vision-cloud-guard-target-1"
       resource_id = "SALES-CMP"
@@ -152,7 +152,7 @@ compartments_dependency = {
 
 The example now relies on references to compartments (*HR-CMP* and *SALES-CMP* keys) rather than the literal compartment OCIDs. Those keys also need to be known somehow, but they are more readable than OCIDs and can have their naming standardized by DevOps, facilitating automation.
 
-The *compartments_dependency* map is typically the output of another Terraform configuration that gets published in a well-defined location for easy consumption. For instance, [this example](./examples/external_dependency/README.md) uses OCI Object Storage object for sharing dependencies across Terraform configurations. 
+The *compartments_dependency* map is typically the output of another Terraform configuration that gets published in a well-defined location for easy consumption. For instance, [this example](./examples/external_dependency/README.md) uses OCI Object Storage object for sharing dependencies across Terraform configurations.
 
 The external dependency approach helps with the creation of loosely coupled Terraform configurations with clearly defined dependencies between them, avoiding copying and pasting.
 

@@ -17,7 +17,7 @@ Check the [examples](./examples/) folder for fully runnable examples.
 ## <a name="requirements">Requirements</a>
 ### IAM Permissions
 
-This module requires the following OCI IAM permissions in the compartments where vaults and keys are defined. 
+This module requires the following OCI IAM permissions in the compartments where vaults and keys are defined.
 
 ```
 allow group <group> to manage vaults in compartment <vault-compartment-name>
@@ -49,7 +49,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -79,7 +79,7 @@ In this module, vaults and keys are defined using the *vaults_configuration* obj
 - **default_freeform_tags**: the default freeform tags that are applied to all resources managed by this module. It can be overriden by *freeform_tags* attribute in each resource.
 - **vaults**: the vaults.
 - **keys**: the encryption keys.
-- **existing_keys_grants**: any existing keys to which grants should be assigned. 
+- **existing_keys_grants**: any existing keys to which grants should be assigned.
 
 ### Defining Vaults
 
@@ -104,7 +104,7 @@ The *keys* attribute supports the following attributes:
 - **algorithm**: the key algorithm. Valid values: "AES", "RSA", "ECDSA". Default: "AES".
 - **length**: key length in bytes. "AES" lengths: 16, 24, 32. "RSA" lengths: 256, 384, 512. "ECDSA" lengths: 32, 48, 66. Default: 32.
 - **curve_id**: curve id for "ECDSA" keys.
-- **protection_mode**: indicates how the key is persisted and where crypto operations are performed. Valid values: "HSM" and "SOFTWARE". Default: "HSM". 
+- **protection_mode**: indicates how the key is persisted and where crypto operations are performed. Valid values: "HSM" and "SOFTWARE". Default: "HSM".
 - **service_grantees**: the OCI service names allowed to use the key.
 - **group_grantees**: the IAM group names allowed to use the key-delegate.
 - **versions**: a list of strings representing key versions. Use this to rotate keys.
@@ -123,9 +123,9 @@ The module also allows for granting access to specified OCI services and IAM gro
 ## An Example
 
 The following snippet defines a vault and two keys.
-- The vault (*VISION-VAULT*) is created in a shared HSM partition (per module default value). 
-- Both keys are AES 32-byte keys protected by HSM (per module default values). 
-- The first key (*VISION-BUCKET-KEY*) is created in the *VISION-VAULT*, per *vault_key* value. It is created in the same compartment as the vault, as it does not assign *compartment_id*. It is granted access by Object Storage service in Ashburn region and by *vision-appdev-admin-group* IAM group. It has been rotated twice, per *versions* setting. 
+- The vault (*VISION-VAULT*) is created in a shared HSM partition (per module default value).
+- Both keys are AES 32-byte keys protected by HSM (per module default values).
+- The first key (*VISION-BUCKET-KEY*) is created in the *VISION-VAULT*, per *vault_key* value. It is created in the same compartment as the vault, as it does not assign *compartment_id*. It is granted access by Object Storage service in Ashburn region and by *vision-appdev-admin-group* IAM group. It has been rotated twice, per *versions* setting.
 - The second key (*VISION-BLOCK-VOLUME-KEY*) is created in an externally managed Vault identified by *vault_management_endpoint* URL. It is created in the same compartment as *VISION-VAULT* vault, as it does not assign *compartment_id*. It is granted access by Block Storage service and by *vision-appdev-admin-group* IAM group. It hasn't been rotated.
 
 ```
@@ -152,7 +152,7 @@ vaults_configuration = {
       group_grantees = ["vision-appdev-admin-group"]
     }
   }
-} 
+}
 ```
 
 ### <a name="ext_dep">External Dependencies</a>
@@ -185,7 +185,7 @@ vaults_configuration = {
       group_grantees = ["vision-appdev-admin-group"]
     }
   }
-} 
+}
 
 compartments_dependency = {
   "SECURITY-CMP" : {
@@ -202,7 +202,7 @@ vaults_dependency = {
 
 The example now relies on a reference to a compartment (*SECURITY-CMP* key) rather than a literal compartment OCID and on a reference to a management endpoint (*SHARED-VIRTUAL-PRIVATE-VAULT* key) rather than a literal endpoint URL. These keys also need to be known somehow, but they are more readable than OCIDs/URLs and can have their naming standardized by DevOps, facilitating automation.
 
-The *compartments_dependency* and *vaults_dependency* maps are typically the output of other Terraform configurations that get published in a well-defined location for easy consumption. For instance, [this example](./examples/external_dependency/README.md) uses OCI Object Storage object for sharing dependencies across Terraform configurations. 
+The *compartments_dependency* and *vaults_dependency* maps are typically the output of other Terraform configurations that get published in a well-defined location for easy consumption. For instance, [this example](./examples/external_dependency/README.md) uses OCI Object Storage object for sharing dependencies across Terraform configurations.
 
 The external dependency approach helps with the creation of loosely coupled Terraform configurations with clearly defined dependencies between them, avoiding copying and pasting.
 

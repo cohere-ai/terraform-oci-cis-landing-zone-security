@@ -10,8 +10,8 @@ It defines a host recipe (*VISION-HOST-RECIPE*), a host target (*VISION-HOST-TAR
 1. Rename *input.auto.tfvars.template* to *\<project-name\>.auto.tfvars*, where *\<project-name\>* is any name of your choice.
 
 2. Within *\<project-name\>.auto.tfvars*, provide tenancy connectivity information and adjust the *security_zones_configuration* input variable, by making the appropriate substitutions:
-   - Replace \*<REPLACE-BY-COMPARTMENT-OCID\>* placeholder by the appropriate compartment OCID. 
-   - Replace \*<REPLACE-BY-TARGET-COMPARTMENT-OCID\>* placeholder by the appropriate compartment OCID. 
+   - Replace \*<REPLACE-BY-COMPARTMENT-OCID\>* placeholder by the appropriate compartment OCID.
+   - Replace \*<REPLACE-BY-TARGET-COMPARTMENT-OCID\>* placeholder by the appropriate compartment OCID.
    - Replace \*<REPLACE-BY-TARGET-REGISTRY-COMPARTMENT-OCID\>* placeholder by the appropriate compartment OCIDs, where images registries are stored.
 
 Refer to [VSS module README.md](../../README.md) for overall attributes usage.
